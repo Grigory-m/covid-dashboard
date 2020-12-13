@@ -1,0 +1,45 @@
+@mixin fullscreen-block {
+  & {
+    flex-direction: column;
+  }
+
+  & > .nav-tabs {
+    position: relative;
+    opacity: 1;
+  }
+
+  & > .tab-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: none;
+    height: 100%;
+    overflow: hidden;
+
+    .tab-pane {
+      grid-area: initial;
+      display: none;
+      opacity: 0;
+      overflow: hidden;
+      height: 100%;
+
+      &.active {
+        display: block;
+      }
+
+      &.show {
+        opacity: 1;
+      }
+
+      section.list {
+        th:nth-child(3),
+        td:nth-child(3){
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  .tab-graph {
+    margin: 0;
+  }
+}

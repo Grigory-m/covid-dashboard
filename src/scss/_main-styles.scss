@@ -1,0 +1,89 @@
+section {
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  
+  &:hover {
+    color: $primary;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  height: 100%;
+  margin: .5rem;
+  overflow: hidden;
+}
+
+.container {
+  padding: 0;
+}
+
+.list-graph-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  height: 100%;
+  width: 100%;
+
+  & > * {
+    flex-grow: 1;
+  }
+}
+
+.wrapper > .nav-tabs {
+  position: absolute;
+  opacity: 0;
+}
+
+.wrapper > .tab-content {
+  display: grid;
+  column-gap: .5rem;
+  grid-template-areas:
+    "list map table"
+    "graph map table";
+  grid-template-rows: repeat(2, 50%);
+  grid-template-columns: 2fr 5fr 2fr;
+  width: 100%;
+
+  .tab-pane {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.tab-list {
+  grid-area: list;
+}
+
+.tab-graph {
+  grid-area: graph;
+  margin-top: .5rem;
+}
+
+.tab-map {
+  grid-area: map;
+}
+
+.tab-table {
+  grid-area: table;
+}

@@ -1,0 +1,41 @@
+table.table {
+  margin: 0;
+  
+  font-size: .9rem;
+  line-height: 1rem;
+
+  & > :not(caption) > * > * {
+    padding: 0.1rem;
+  }
+
+  tbody > tr {
+    cursor: pointer;
+  }
+
+  tr {
+    background-color: $gray-900;
+    
+    &:nth-child(2n) {
+      background-color: $gray-800;
+    }
+  }
+
+  tr.table-active {
+    background-color: $gray-600;
+
+    &:hover {
+      background-color: $gray-600;
+    }
+  }
+
+  td {
+    background-color: inherit;
+  }
+
+  th {
+    padding-left: 0.3rem;
+    
+    background-color: inherit;
+    font-weight: 400;
+  }
+}

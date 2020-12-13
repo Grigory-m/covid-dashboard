@@ -1,0 +1,68 @@
+.wrapper[data-fullscreen] > .nav-tabs {
+  display: none;
+}
+
+.wrapper[data-fullscreen] {
+  @include fullscreen-block;
+  .tab-content {
+    .tab-pane,
+    .tab-pane.active {
+      grid-area: initial;
+      display: none;
+      opacity: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+  }
+}
+
+.wrapper[data-fullscreen=list] {
+  .tab-content {
+    .tab-pane {
+      &.tab-list {
+        display: block;
+        opacity: 1;
+      }
+
+      section.list {
+        th:nth-child(3),
+        td:nth-child(3){
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.wrapper[data-fullscreen=graph] {
+  .tab-content {
+    .tab-pane {
+      &.tab-graph {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.wrapper[data-fullscreen=map] {
+  .tab-content {
+    .tab-pane {
+      &.tab-map {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.wrapper[data-fullscreen=table] {
+  .tab-content {
+    .tab-pane {
+      &.tab-table {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+section.list {
+  min-width: min-content;
+  
+  .table {
+    th:nth-child(1),
+    td:nth-child(1){
+      text-align: left;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3){
+      text-align: right;
+    }
+    
+    .flag {
+      width: 20px;
+      height: 18px;
+      
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

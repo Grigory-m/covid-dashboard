@@ -140,7 +140,7 @@ const config = {
       filename: './index.html'
     }),
     new CopyWebpackPlugin([
-      {from: './src/img', to: './img/'},
+      {from: './src/assets/img', to: './img/'},
     ]),
   ],
 

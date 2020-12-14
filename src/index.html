@@ -16,6 +16,179 @@
           crossorigin="anonymous"></script>
 </head>
 <body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+    <!-- Лого-->
+      <a class="navbar-brand px-3" href="#">Covid dashboard</a>
+    
+    <!-- Бургер -->
+      <button class="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+    <!-- Меню -->
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Period</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">All time</a>
+              <a class="dropdown-item" href="#">Last day</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cases</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Illness</a>
+              <a class="dropdown-item" href="#">Deaths</a>
+              <a class="dropdown-item" href="#">Recovered</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Values</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">All cases</a>
+              <a class="dropdown-item" href="#">Per 100k population</a>
+            </div>
+          </li>
+        </ul>
+    
+    <!-- Поиск -->
+        <form class="form-inline mx-2 my-lg-0 my-2">
+          <input class="form-control mr-sm-2" type="text" placeholder="Enter country">
+          <button class="btn btn-secondary my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    </header>
+    <div class="wrapper">
+      <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#list-graph">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#graph">Graph</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#map">Map</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#table">Table</a>
+      </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+      
+        <div class="tab-list tab-pane fade active show" id="list-graph">
+          <section class="list container">
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-header">List</div>
+                <div class="card-body">
+      
+                  <table class="table table-hover">
+                    <thead>
+                    <tr>
+                      <th scope="col" colspan="2">Country</th>
+                      <th scope="col">Cases</th>
+                    </tr>
+                    </thead>
+      
+                    <tbody>
+                    <tr class="table-dark">
+                      <td><div class="flag"></div></td>
+                      <th scope="row">Saint Vincent and the Grenadines</th>
+                      <td>Column content</td>
+                    </tr>
+                    <tr class="table-active">
+                      <td><div class="flag"></div></td>
+                      <th scope="row">Active</th>
+                      <td>Column content</td>
+                    </tr>
+                    </tbody>
+                  </table>
+      
+                </div>
+              </div>
+          </section>
+
+        
+        </div>
+        <div class="tab-graph tab-pane fade" id="graph">
+          <section class="graph container">
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Graphs</div>
+                <div class="card-body">
+                  <div class="graph-content">
+        
+                  </div>
+                </div>
+              </div>
+          </section>
+        </div>
+        <div class="tab-map tab-pane fade" id="map">
+          <section class="map container">
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Map</div>
+                <div class="card-body">
+                  <div class="map-content">
+        
+                  </div>
+                </div>
+              </div>
+          </section>
+        </div>
+        <div class="tab-table tab-pane fade" id="table">
+          <section class="tables container">
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Table</div>
+                <div class="card-body">
+        
+                  <table class="table table-hover">
+                    <thead>
+                    <tr>
+                      <th scope="col">Location</th>
+                      <th scope="col">Cases</th>
+                      <th scope="col">Deaths</th>
+                      <th scope="col">Recovered</th>
+                    </tr>
+                    </thead>
+        
+                    <tbody>
+                    <tr class="table-dark">
+                      <th scope="row">Saint Vincent and the Grenadines</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr class="table-active">
+                      <th scope="row">Active</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    </tbody>
+                  </table>
+        
+                </div>
+              </div>
+          </section>
+        </div>
+      
+      </div>
+      </div>
+    <footer>
+      <div class="github">
+        <ul>
+          <li><a href="https://github.com/Grigory-m">Grigory Murashko</a></li>
+          <li><a href="https://github.com/Soyo265">Kotlyarova Alyona</a></li>
+        </ul>
+      </div>
+      <div class="rs-school">
+        <a href="https://rs.school/js/">
+          <img src="assets/img/rs_school_logo.svg" alt="rs school">
+        </a>
+      </div>
+      </footer>
 
 </body>
 </html>

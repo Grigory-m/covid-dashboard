@@ -1,0 +1,21 @@
+::-webkit-scrollbar {
+  width: 12px;
+
+  &-thumb {
+    background-color: $primary;
+    border-radius: .5rem;
+  }
+
+  &-button {
+    display: none;
+  }
+
+  &-track {
+    background-color: transparent;
+  }
+
+  &-track-piece {
+    background-color: transparent;
+    border-radius: .5rem;
+  }
+}

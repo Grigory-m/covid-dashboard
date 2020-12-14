@@ -1,0 +1,21 @@
+.card {
+  border: 1px solid $primary;
+  background-color: transparent !important;
+  overflow: hidden;
+  height: 100%;
+
+  .card-header {
+    cursor: pointer;
+  }
+
+  .card-body {
+    padding: 0 .2rem;
+    border-bottom-left-radius: inherit !important;
+    border-bottom-right-radius: inherit !important;
+    overflow-x: auto;
+  }
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+}

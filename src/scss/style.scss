@@ -1,0 +1,21 @@
+@import "variables/bootstrap-variables";
+@import "bootstrap/bootstrap";
+@import "bootstrap/bootswatch";
+@import "custom-bootstrap";
+
+@import "variables/custom-variables";
+@import "modules/header";
+@import "modules/list";
+@import "modules/map";
+@import "modules/table";
+@import "modules/graph";
+@import "modules/footer";
+
+@import "mixins/fullscreen-block";
+@import "components/scrollbar";
+@import "components/tables";
+ 
+@import "main-styles";
+
+@import "media";
+@import "open-fullscreen";

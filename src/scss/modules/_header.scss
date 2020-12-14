@@ -1,0 +1,27 @@
+.navbar-nav {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media (min-width: 992px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.form-inline {
+  display: flex;
+  flex-grow: 1;
+
+  .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+    color: black;
+  }
+  
+  .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+  }
+}

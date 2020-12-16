@@ -36,6 +36,7 @@ class Header {
           <form class="form-inline mx-2 my-lg-0 my-2">
             <input class="form-control mr-sm-2" type="text" placeholder="Enter country">
             <button class="btn btn-secondary my-sm-0" data-index="Enter" type="submit">Search</button>
+            <img class="form-keyboard" src="img/keyboard.png" alt="keyboard">
           </form>
         </div>
       </nav>

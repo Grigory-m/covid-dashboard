@@ -3,3 +3,29 @@
     @include fullscreen-block;
   }
 }
+
+@media screen and (max-width: 768px) {
+
+  .keyboard__key {
+    font-size: 0.9rem;
+  }
+
+  .material-icons {
+    font-size: 1.2rem;
+  }
+
+  .keyboard__key--activatable::after {
+    top: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+   }
+}
+
+@media screen and (max-width: 640px) {
+
+  .keyboard__key {
+    font-size: 0.9rem;
+    height: 35px;
+  }
+}

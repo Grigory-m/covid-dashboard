@@ -9,8 +9,16 @@
 }
 
 .form-inline {
+  position: relative;
   display: flex;
   flex-grow: 1;
+
+  .form-keyboard {
+    position: absolute;
+    top: 5px;
+    right: 75px;
+    cursor: pointer;
+  }
 
   .form-control {
     flex-grow: 1;

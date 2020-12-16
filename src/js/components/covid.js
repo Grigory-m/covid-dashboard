@@ -12,16 +12,15 @@ class Covid {
   init = () => {
     const layout = new Layout();
     const header = new Header();
-    
+    const list = new List();    
+        
     header.createHeader();
     layout.createLayout();
+    const input = document.querySelector('input');
         
-    this.getData()
-      .then(() => {   
-        const list = new List();     
-        list.createListContent(this.data, this.options);
-      })
-    document.addEventListener('click', this.clickHandler);      
+    this.getData().then(() => list.createListContent(this.data, this.options));
+    document.addEventListener('click', this.clickHandler); 
+    input.addEventListener('input', this.inputHandler);     
   }
 
   getData = async () => {
@@ -37,16 +36,26 @@ class Covid {
   }
 
   clickHandler = (event) => {
-    const {target} = event;
-    const dataSet = target.dataset;
+    const {index} = event.target.dataset;
+    const input = document.querySelector('input');
     const list = new List();
+
+    if (!index) return;    
+    if (index === 'Confirmed' || index === 'Deaths' || index === 'Recovered') {
+      this.options.cases = index;
+    }          
+    if (index === 'All') this.options.value = 'all';
+    if (index === 'Per100k') this.options.value = 'per 100k';
+    if (index === 'all-time') this.options.period = 'all time';
+    if (index === 'last-day') this.options.period = 'last day';
+    list.createListContent(this.data, this.options, input.value);
+  }
+
+  inputHandler = (event) => {
     
-    if (dataSet.case) this.options.cases = dataSet.case;          
-    if (dataSet.population === 'All') this.options.abs = true;
-    if (dataSet.population === 'Per100k') this.options.abs = false;
-    if (dataSet.time === 'all-time') this.options.total = true;
-    if (dataSet.time === 'last-day') this.options.total = false;
-    list.createListContent(this.data, this.options);
+    const {value} = event.target;
+    const list = new List();
+    list.createListContent(this.data, this.options, value);
   }
 }
 

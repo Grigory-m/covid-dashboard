@@ -1,0 +1,89 @@
+
+.keyboard {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: 90%;
+  padding: 5px 0;
+  background: $gray-800;
+  box-shadow: 0 0 50px $black;
+  user-select: none;
+  transition: top 0.4s ease-in;
+  z-index: 1;
+}
+
+.keyboard--hidden {
+  top: -600px;
+}
+
+.keyboard__keys {
+  text-align: center;
+}
+
+.keyboard__key {
+  height: 40px;
+  width: 5%;
+  max-width: 90px;
+  margin: 3px;
+  border-radius: 4px;
+  border: none;
+  background: $gray-700;
+  color: $white;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  transition: all 0.2s ease-out;
+  &:active {
+    background: $primary;
+    transform: translateY(2px);
+  }
+}
+
+.key-active {
+  background:  $primary;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(2px);
+}
+
+.keyboard__key--wide {
+  width: 12%;
+}
+
+.keyboard__key--extra-wide {
+  width: 36%;
+  max-width: 500px;
+}
+
+.keyboard__key--activatable::after {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: $gray-900;
+  border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+  background: $green;
+}
+
+.audio__key--active::after {
+  background: $cyan;
+}
+
+.speech__key--active::after {
+  background: $pink;
+}
+
+.keyboard__key--dark {
+  background: $gray-700;
+}

@@ -16,8 +16,8 @@ export default class {
 
   getGlobalCases = async () => {
     try {
-      let response = await fetch(`${this.url}`);
-      let data = await response.json();
+      const response = await fetch(`${this.url}`);
+      const data = await response.json();
       return data;
     } catch (error) {
       throw new Error('Не удалось получить данные о COVID-19!')

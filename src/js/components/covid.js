@@ -2,7 +2,7 @@ import Layout from './layout';
 import List from './list';
 import Data from '../api/data';
 import Header from './header';
-
+import Map from './map';
 class Covid {
   constructor(options) {
     this.data = [];
@@ -12,13 +12,19 @@ class Covid {
   init = () => {
     const layout = new Layout();
     const header = new Header();
-    const list = new List();    
+    const list = new List();   
+    const map = new Map(); 
             
     header.createHeader();
     layout.createLayout();
+    list.createList();
+    const newMap = map.createMap();
+           
+    this.getData().then(() => {
+      list.createListContent(this.data, this.options);
+      map.createMarker(newMap, 'Belarus'); 
+    });
     const input = document.querySelector('input');
-        
-    this.getData().then(() => list.createListContent(this.data, this.options));
     document.addEventListener('click', this.clickHandler); 
     input.addEventListener('input', this.inputHandler);
     input.focus();    

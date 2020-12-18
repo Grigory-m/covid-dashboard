@@ -1,8 +1,6 @@
 class List {
   
   createListContent = (data, options, inputValue) => {
-    this.createListMarkup();
-    
     const list = document.querySelector('.table > tbody');
     const typeOfCases = document.querySelector('.type-case');
     const period = options.period === 'all time' ? `Total${  options.cases}` : `New${  options.cases}`;
@@ -14,7 +12,7 @@ class List {
     typeOfCases.innerText = `${options.cases} / ${options.period} / ${options.value}`;
     
     if (!data.Countries) {
-      dataCovid = JSON.parse(localStorage.getItem('data'));
+      dataCovid = JSON.parse(localStorage.getItem('data')).Countries;
     }
     if (inputValue) {
       dataCovidFiltered = dataCovid.filter(((elem) => {
@@ -38,29 +36,31 @@ class List {
     })       
   }
 
-  createListMarkup = () => {
+  createList = () => {
     const tabContent = document.getElementById('myTabContent');
+    const list = document.createElement('div');
+    list.classList.add('tab-list', 'tab-pane', 'fade', 'active', 'show');
+    list.id = 'list-graph';
 
-    tabContent.innerHTML = `
-      <div class="tab-list tab-pane fade active show" id="list-graph">
-        <section class="list container">
-            <div class="card text-white bg-primary mb-3">
-              <div class="card-header">List</div>
-              <div class="card-body">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="2">Country</th>
-                      <th class="type-case" scope="col">Cases</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-        </section>  
-      </div>
+    list.innerHTML = `
+      <section class="list container">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">List</div>
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" colspan="2">Country</th>
+                  <th class="type-case" scope="col">Cases</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>  
     `;
+    tabContent.append(list);
   }
 }
 

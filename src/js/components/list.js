@@ -4,14 +4,14 @@ class List {
     const list = document.querySelector('.table > tbody');
     const typeOfCases = document.querySelector('.type-case');
     const period = options.period === 'all time' ? `Total${  options.cases}` : `New${  options.cases}`;
-    const population = options.value === 'all' ? 1 : 100000;
+    const absolute = options.value === 'abs' ? 1 : 100000;
     let dataCovid = data.Countries;
     let dataCovidFiltered;
 
     list.innerHTML = '';
     typeOfCases.innerText = `${options.cases} / ${options.period} / ${options.value}`;
     
-    if (!data.Countries) {
+    if (!data.Countries) {      
       dataCovid = JSON.parse(localStorage.getItem('data')).Countries;
     }
     if (inputValue) {
@@ -30,7 +30,7 @@ class List {
         listPosition.innerHTML = `
         <td><div class="flag"><img src="${img.src}" alt="flag"></div></td>
         <th scope="row">${country.Country}</th>
-        <td>${Math.round(country[period] / population)}</td>
+        <td>${Math.round(country[period] / absolute)}</td>
         `;
         list.append(listPosition);             
     })       

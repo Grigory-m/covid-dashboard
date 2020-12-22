@@ -1,8 +1,10 @@
 import Layout from './layout';
 import List from './list';
 import Data from '../api/data';
-import Header from './header';
+import Table from "./table";
 import Map from './map';
+import Graph from "./graph";
+
 class Covid {
   constructor(options) {
     this.data = [];
@@ -12,8 +14,9 @@ class Covid {
   init = () => {
     const layout = new Layout();
     const header = new Header();
-    const list = new List();   
-    const map = new Map();     
+    const list = new List();  
+    const map = new Map();   
+    const table = new Table();
             
     header.createHeader();
     layout.createLayout();
@@ -22,7 +25,8 @@ class Covid {
 
     this.getData().then(() => {
       list.createListContent(this.data, this.options);
-      map.createMapContent(this.data, this.options, this.countries); 
+      map.createMapContent(this.data, this.options, this.countries);
+      table.createTableContent(this.data, this.options);
     });
     const input = document.querySelector('input');
     document.addEventListener('click', this.clickHandler); 
@@ -48,7 +52,8 @@ class Covid {
     const key = event.target.closest('.keyboard__key');
     const list = new List();
     const map = new Map();
-        
+    const table = new Table();
+
     if (index || key) {
       if (index === 'Confirmed' || index === 'Deaths' || index === 'Recovered') {
         this.options.cases = index;
@@ -59,13 +64,16 @@ class Covid {
       if (index === 'last-day') this.options.period = 'last day';
       list.createListContent(this.data, this.options, input.value);
       map.createMapContent(this.data, this.options, this.countries);
+      table.createTableContent(this.data, this.options, input.value);
     }       
   }
 
   inputHandler = (event) => {    
     const {value} = event.target;
     const list = new List();
+    const table = new Table();
     list.createListContent(this.data, this.options, value);
+    table.createTableContent(this.data, this.options, value);
   }
 }
 

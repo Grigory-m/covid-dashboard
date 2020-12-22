@@ -28,7 +28,7 @@ class Header {
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Values</a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" data-index="All" href="#">All cases</a>
+                <a class="dropdown-item" data-index="absolute" href="#">All cases</a>
                 <a class="dropdown-item" data-index="Per100k" href="#">Per 100k population</a>
               </div>
             </li>

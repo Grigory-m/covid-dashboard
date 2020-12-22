@@ -1,8 +1,8 @@
 import Layout from './layout';
 import List from './list';
 import Data from '../api/data';
-import Header from './header';
 import Table from "./table";
+import Map from './map';
 import Graph from "./graph";
 
 class Covid {
@@ -15,16 +15,20 @@ class Covid {
     const layout = new Layout();
     const header = new Header();
     const list = new List();  
+    const map = new Map();   
     const table = new Table();
             
     header.createHeader();
     layout.createLayout();
-    const input = document.querySelector('input');
-        
+    list.createList();
+    map.createMap();
+
     this.getData().then(() => {
       list.createListContent(this.data, this.options);
+      map.createMapContent(this.data, this.options, this.countries);
       table.createTableContent(this.data, this.options);
     });
+    const input = document.querySelector('input');
     document.addEventListener('click', this.clickHandler); 
     input.addEventListener('input', this.inputHandler);
     input.focus();    
@@ -33,7 +37,7 @@ class Covid {
   getData = async () => {
     const countries = new Data('https://restcountries.eu/rest/v2/');
     const covid = new Data('https://api.covid19api.com/summary');
-      
+        
     this.countries = await countries.getFlagsAndPopulations();
     this.data = await covid.getGlobalCases();
     
@@ -47,17 +51,19 @@ class Covid {
     const input = document.querySelector('input');
     const key = event.target.closest('.keyboard__key');
     const list = new List();
+    const map = new Map();
     const table = new Table();
 
     if (index || key) {
       if (index === 'Confirmed' || index === 'Deaths' || index === 'Recovered') {
         this.options.cases = index;
       }          
-      if (index === 'All') this.options.value = 'all';
+      if (index === 'absolute') this.options.value = 'abs';
       if (index === 'Per100k') this.options.value = 'per 100k';
       if (index === 'all-time') this.options.period = 'all time';
       if (index === 'last-day') this.options.period = 'last day';
       list.createListContent(this.data, this.options, input.value);
+      map.createMapContent(this.data, this.options, this.countries);
       table.createTableContent(this.data, this.options, input.value);
     }       
   }

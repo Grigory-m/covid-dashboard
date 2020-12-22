@@ -1,17 +1,9 @@
 export default class Table {
-  /**
-   * Отрисовывает содержимое таблицы в соответствии с полученными данными из класса Covid
-   * @param {object} data
-   * @param {object} options
-   * @param {object} inputValue
-   */
   createTableContent = (data, options, inputValue) => {
-    // отрисовка контейнеров и заголовков таблицы
     this.createTableMarkup();
     
     const tableContainer = document.querySelector('.tables table > tbody');
     const population = options.value === 'all' ? 1 : 100000;
-    // получение всех показателей в зависимости от необходимого периода
     const confirmedCases = options.period === 'all time' ? 'TotalConfirmed' : 'NewConfirmed';
     const deathsCases = options.period === 'all time' ? 'TotalDeaths' : 'NewDeaths';
     const recoveredCases = options.period === 'all time' ? 'TotalRecovered' : 'NewRecovered';
@@ -22,7 +14,6 @@ export default class Table {
       dataCovid = JSON.parse(localStorage.getItem('data'));
     }
 
-    // фильтрация по стране
     if (inputValue) {
       dataCovidFiltered = dataCovid.filter(((elem) => {
         const inputValueLength = inputValue.length;
@@ -31,7 +22,6 @@ export default class Table {
       dataCovid = dataCovidFiltered;
     }
     
-    // сортировка данных и заполнение
     dataCovid.sort((a, b) => b[confirmedCases] - a[confirmedCases]).forEach((country) => {
       const listPosition = document.createElement('tr');
       const th = document.createElement('th');

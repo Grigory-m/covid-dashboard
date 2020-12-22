@@ -1,14 +1,14 @@
 export default class Table {
-  createTableContent = (data, options, inputValue) => {
-    this.createTableMarkup();
-    
+  createTableContent = (data, options, inputValue) => {    
     const tableContainer = document.querySelector('.tables table > tbody');
-    const population = options.value === 'all' ? 1 : 100000;
+    const population = options.value === 'abs' ? 1 : 100000;
     const confirmedCases = options.period === 'all time' ? 'TotalConfirmed' : 'NewConfirmed';
     const deathsCases = options.period === 'all time' ? 'TotalDeaths' : 'NewDeaths';
     const recoveredCases = options.period === 'all time' ? 'TotalRecovered' : 'NewRecovered';
     let dataCovid = data.Countries;
     let dataCovidFiltered;
+    
+    tableContainer.innerHTML = '';
     
     if (!data.Countries) {
       dataCovid = JSON.parse(localStorage.getItem('data'));
@@ -40,30 +40,33 @@ export default class Table {
     })
   }
 
-  createTableMarkup = () => {
+  createTable = () => {
     const tabContent = document.getElementById('myTabContent');
+    const table = document.createElement('div');
+    table.classList.add('tab-table', 'tab-pane', 'fade');
+    table.id = 'table';
 
-    tabContent.innerHTML += `
-      <div class="tab-table tab-pane fade" id="table">
-        <section class="tables container">
-            <div class="card text-white bg-primary mb-3">
-              <div class="card-header">Table</div>
-              <div class="card-body">
-                <table class="table table-hover">
-                  <thead>
-                  <tr>
-                    <th scope="col">Location</th>
-                    <th scope="col">Confirmed</th>
-                    <th scope="col">Deaths</th>
-                    <th scope="col">Recovered</th>
-                  </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
+    table.innerHTML = `
+      <section class="tables container">
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Table</div>
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th scope="col">Location</th>
+                  <th scope="col">Confirmed</th>
+                  <th scope="col">Deaths</th>
+                  <th scope="col">Recovered</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
             </div>
-        </section>
-      </div>
+          </div>
+      </section>
     `;
+    
+    tabContent.append(table);
   }
 }

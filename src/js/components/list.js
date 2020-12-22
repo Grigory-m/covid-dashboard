@@ -40,7 +40,7 @@ class List {
     const tabContent = document.getElementById('myTabContent');
     const list = document.createElement('div');
     list.classList.add('tab-list', 'tab-pane', 'fade', 'active', 'show');
-    list.id = 'list-graph';
+    list.id = 'list';
 
     list.innerHTML = `
       <section class="list container">

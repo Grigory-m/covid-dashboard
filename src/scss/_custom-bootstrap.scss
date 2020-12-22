@@ -16,6 +16,14 @@
   }
 }
 
+table.table th {
+  vertical-align: middle;
+}
+
 .nav-link {
   padding: 0.5rem 1rem;
+}
+
+.form-inline .form-control {
+  margin-right: 0 !important;
 }

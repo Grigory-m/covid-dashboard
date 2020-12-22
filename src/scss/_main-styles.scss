@@ -1,5 +1,6 @@
 section {
   height: 100%;
+  min-width: min-content;
 }
 
 body {
@@ -38,18 +39,6 @@ ul {
   padding: 0;
 }
 
-.list-graph-wrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  height: 100%;
-  width: 100%;
-
-  & > * {
-    flex-grow: 1;
-  }
-}
-
 .wrapper > .nav-tabs {
   position: absolute;
   opacity: 0;
@@ -62,7 +51,7 @@ ul {
     "list map table"
     "graph map table";
   grid-template-rows: repeat(2, 50%);
-  grid-template-columns: 2fr 5fr 2fr;
+  grid-template-columns: 3fr 6fr 3fr;
   width: 100%;
 
   .tab-pane {

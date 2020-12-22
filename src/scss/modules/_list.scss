@@ -3,12 +3,13 @@ section.list {
   
   .table {
     th:nth-child(1),
-    td:nth-child(1){
+    td:nth-child(2),
+    th:nth-child(2) {
       text-align: left;
     }
 
-    th:nth-child(3),
-    td:nth-child(3){
+    td:nth-child(3),
+    thead th:nth-child(2) {
       text-align: right;
     }
     

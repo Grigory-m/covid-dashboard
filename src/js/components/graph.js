@@ -1,21 +1,21 @@
 import Chart from 'chart.js';
 
 export default class Graph {
-  createGraphContent(data, options, inputValue) {
-    this.createGraphMarkup();
-
+  createGraphContent = (data, options, inputValue) => {
     const graphContainer = document.querySelector('.graph-content');
     this.canvas = document.createElement('canvas');
     this.canvas.height = '100%';
     this.chart = null;
     this.title = 'world';
-    const population = options.value === 'all' ? 1 : 100000;
+    const population = options.value === 'abs' ? 1 : 100000;
     let dataCovid = data.Countries;
     let dataCovidFiltered;
     this.xLabelsData = [];
     this.yCasesData = [];
     this.worldApiUrl = 'https://corona-api.com/timeline';
     this.countryApiUrl = 'https://api.covid19api.com/total/dayone/country/';
+    
+    graphContainer.innerHTML = '';
 
     if (!data.Countries) {
       dataCovid = JSON.parse(localStorage.getItem('data'));
@@ -28,7 +28,7 @@ export default class Graph {
       }))
       dataCovid = dataCovidFiltered;
     };
-
+    
     if (!inputValue) {
       this.getWorldDataByDates().then((apiData) => {
         apiData.forEach((dataByDay) => {
@@ -40,7 +40,7 @@ export default class Graph {
         });
         this.yCasesData.reverse();
         this.xLabelsData.reverse();
-
+        
         this.fillChart(options.cases);
       })
     } else {
@@ -113,22 +113,24 @@ export default class Graph {
     }
   }
 
-  createGraphMarkup = () => {
+  createGraph = () => {
     const tabContent = document.getElementById('myTabContent');
+    const graph = document.createElement('div');
+    graph.classList.add('tab-graph', 'tab-pane', 'fade');
+    graph.id = 'graph';
 
-    tabContent.innerHTML += `
-      <div class="tab-graph tab-pane fade" id="graph">
-        <section class="graph container">
-            <div class="card text-white bg-primary mb-3">
-              <div class="card-header">Graphs</div>
-              <div class="card-body">
-                <div class="graph-content">
-
-                </div>
+    graph.innerHTML = `
+      <section class="graph container">
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Graphs</div>
+            <div class="card-body">
+              <div class="graph-content">
               </div>
             </div>
-        </section>
-      </div>
+          </div>
+      </section>
     `;
+
+    tabContent.append(graph);
   }
 }

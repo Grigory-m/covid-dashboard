@@ -1,6 +1,7 @@
 import Layout from './layout';
 import List from './list';
 import Data from '../api/data';
+import Header from "./table";
 import Table from "./table";
 import Map from './map';
 import Graph from "./graph";
@@ -14,7 +15,8 @@ class Covid {
   init = () => {
     const layout = new Layout();
     const header = new Header();
-    const list = new List();  
+    const list = new List();
+    const graph = new Graph();
     const map = new Map();   
     const table = new Table();
             
@@ -25,6 +27,7 @@ class Covid {
 
     this.getData().then(() => {
       list.createListContent(this.data, this.options);
+      graph.createGraphContent(this.data, this.options);
       map.createMapContent(this.data, this.options, this.countries);
       table.createTableContent(this.data, this.options);
     });
@@ -51,6 +54,7 @@ class Covid {
     const input = document.querySelector('input');
     const key = event.target.closest('.keyboard__key');
     const list = new List();
+    const graph = new Graph();
     const map = new Map();
     const table = new Table();
 
@@ -63,6 +67,7 @@ class Covid {
       if (index === 'all-time') this.options.period = 'all time';
       if (index === 'last-day') this.options.period = 'last day';
       list.createListContent(this.data, this.options, input.value);
+      graph.createGraphContent(this.data, this.options, input.value);
       map.createMapContent(this.data, this.options, this.countries);
       table.createTableContent(this.data, this.options, input.value);
     }       
@@ -71,8 +76,10 @@ class Covid {
   inputHandler = (event) => {    
     const {value} = event.target;
     const list = new List();
+    const graph = new Graph();
     const table = new Table();
     list.createListContent(this.data, this.options, value);
+    graph.createGraphContent(this.data, this.options, value);
     table.createTableContent(this.data, this.options, value);
   }
 }

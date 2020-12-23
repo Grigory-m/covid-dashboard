@@ -11,7 +11,7 @@ export default class Table {
     tableContainer.innerHTML = '';
     
     if (!data.Countries) {
-      dataCovid = JSON.parse(localStorage.getItem('data'));
+      dataCovid = JSON.parse(localStorage.getItem('data')).Countries;
     }
 
     if (inputValue) {

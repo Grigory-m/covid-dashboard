@@ -1,10 +1,11 @@
 import Table from "./table";
 import Graph from "./graph";
 import List from "./list";
+
 export default class Map {
     
   createMapContent = (data, options, countries) => {
-    const map = Map.prototype.map;
+    const {map} = Map.prototype;
     const table = new Table();
     const graph = new Graph();
     const list = new List();
@@ -12,9 +13,10 @@ export default class Map {
     const period = options.period === 'all time' ? `Total${  options.cases}` : `New${  options.cases}`;
     const absolute = options.value === 'abs' ? 1 : 100000;
     const index = `${options.cases} / ${options.period} / ${options.value}`;
+    const {L} = window;
     let dataCovid = data.Countries;
     let color;
-    let newCircles = [];
+    const newCircles = [];
     
     if (!dataCovid) {      
       dataCovid = JSON.parse(localStorage.getItem('data')).Countries;
@@ -43,7 +45,7 @@ export default class Map {
           stroke: false,
           fillColor: color,
           fillOpacity: 1,
-          radius: radius,
+          radius,
         }).addTo(map)
           .bindTooltip(`${country.Country}: ${index} ${Math.round(country[period] / absolute)}`, {className: 'tooltip'});
         circle.on('mousemove', () => {
@@ -66,6 +68,7 @@ export default class Map {
   createMap = () => {
     const map = document.createElement('div');
     const tabContent = document.getElementById('myTabContent');
+    const {L} = window;
     
     map.classList.add('tab-map', 'tab-pane', 'fade', 'active', 'show');
     map.id = 'map';
@@ -95,12 +98,13 @@ export default class Map {
       accessToken: 'pk.eyJ1IjoiZ3JpZ29yeS1tIiwiYSI6ImNrYWR2Y2E2dTAybGEyeHRlcnh3NHJ2ajMifQ.xUrZR7nK5AmTgh9rfjwT3w'
     }).addTo(newMap);
     legend.onAdd = () => {
-      let div = L.DomUtil.create('div', 'legend');
+      const div = L.DomUtil.create('div', 'legend');
       div.innerHTML += `<div class="legend-item"><span class="legend-circle"></span><span>confirmed</span></div>`;
       div.innerHTML += `<div class="legend-item"><span class="legend-circle"></span><span>deaths</span></div>`;
       div.innerHTML += `<div class="legend-item"><span class="legend-circle"></span><span>recovered</span></div>`;          
       return div;
     };
+    newMap.setMaxBounds([[-90, 0], [90, 180]]);
     legend.addTo(newMap);
     Map.prototype.map = newMap;
   }  

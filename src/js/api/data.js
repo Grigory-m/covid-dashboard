@@ -20,7 +20,6 @@ export default class {
       const data = await response.json();      
       return data;
     } catch (error) {
-      console.log(error)
       throw new Error('Не удалось получить данные о COVID-19!')
     }    
   }

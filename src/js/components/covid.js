@@ -59,7 +59,7 @@ class Covid {
     const input = document.querySelector('input');
     const key = event.target.closest('.keyboard__key');
     const listPosition = event.target.closest('[data-list]');
-    const fullscreenBtn = event.target.closest('.card-header');
+    const fullscreenBtn = event.target.closest('.fullscreen-btn');
     const worldLink = event.target.closest('a[data-link="world"]');
     const list = new List();
     const map = new Map();
@@ -90,7 +90,8 @@ class Covid {
     } 
     if (fullscreenBtn) {
       const wrapper = document.querySelector('.wrapper');
-      const target = fullscreenBtn.children[0].textContent.toLowerCase();
+      const thead = event.target.closest('.card-header');
+      const target = thead.children[0].textContent.toLowerCase();
       if (wrapper.hasAttribute('data-fullscreen')) wrapper.removeAttribute('data-fullscreen');
       else wrapper.dataset.fullscreen = target;
     }

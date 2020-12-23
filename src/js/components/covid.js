@@ -59,6 +59,7 @@ class Covid {
     const input = document.querySelector('input');
     const key = event.target.closest('.keyboard__key');
     const listPosition = event.target.closest('[data-list]');
+    const fullscreenBtn = event.target.closest('.card-header');
     const list = new List();
     const map = new Map();
     const table = new Table();
@@ -85,6 +86,12 @@ class Covid {
       listPosition.classList.add('table-active');
       table.createTableContent(this.data, this.options, input.value, country);
     } 
+    if (fullscreenBtn) {
+      const wrapper = document.querySelector('.wrapper');
+      const target = fullscreenBtn.textContent.toLowerCase();
+      if (wrapper.hasAttribute('data-fullscreen')) wrapper.removeAttribute('data-fullscreen');
+      else wrapper.dataset.fullscreen = target;
+    }
   }
 
   inputHandler = (event) => {    

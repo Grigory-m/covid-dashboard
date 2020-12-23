@@ -8,4 +8,8 @@ section.graph {
     height: 100%;
     padding: 5px;
   }
+  
+  canvas {
+    width: 100% !important;
+  }
 }

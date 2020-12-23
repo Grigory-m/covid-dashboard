@@ -104,7 +104,7 @@ export default class Map {
       div.innerHTML += `<div class="legend-item"><span class="legend-circle"></span><span>recovered</span></div>`;          
       return div;
     };
-    newMap.setMaxBounds([[-90, 0], [90, 180]]);
+    newMap.setMaxBounds([[-90, -180], [90, 180]]);
     legend.addTo(newMap);
     Map.prototype.map = newMap;
   }  

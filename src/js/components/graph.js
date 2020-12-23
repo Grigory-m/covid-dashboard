@@ -1,7 +1,7 @@
 import Chart from 'chart.js';
 
 export default class Graph {
-  createGraphContent = (data, options, inputValue) => {
+  createGraphContent = (data, options, inputValue, selectedCountry) => {
     const graphContainer = document.querySelector('.graph-content');
     this.canvas = document.createElement('canvas');
     this.canvas.height = '100%';
@@ -28,8 +28,12 @@ export default class Graph {
       }))
       dataCovid = dataCovidFiltered;
     };
-    
-    if (!inputValue) {
+
+    if (selectedCountry) {
+      dataCovid = dataCovid.filter((element) => element.Country === selectedCountry);
+    }
+
+    if (!inputValue && !selectedCountry) {
       this.getWorldDataByDates().then((apiData) => {
         apiData.forEach((dataByDay) => {
           const cases = dataByDay[options.cases.toLowerCase()];

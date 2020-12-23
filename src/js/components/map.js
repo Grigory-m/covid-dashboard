@@ -1,9 +1,13 @@
 import Table from "./table";
+import Graph from "./graph";
+import List from "./list";
 export default class Map {
     
   createMapContent = (data, options, countries) => {
     const map = Map.prototype.map;
     const table = new Table();
+    const graph = new Graph();
+    const list = new List();
     const input = document.querySelector('input');
     const period = options.period === 'all time' ? `Total${  options.cases}` : `New${  options.cases}`;
     const absolute = options.value === 'abs' ? 1 : 100000;
@@ -50,6 +54,8 @@ export default class Map {
         });
         circle.on('click', () => {
           table.createTableContent(data, options, input.value, country.Country);
+          graph.createGraphContent(data, options, input.value, country.Country);
+          list.createListContent(data, options, input.value, country.Country);
         });          
         newCircles.push(circle);
       }

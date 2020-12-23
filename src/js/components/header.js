@@ -32,6 +32,9 @@ class Header {
                 <a class="dropdown-item" data-index="Per100k" href="#">Per 100k population</a>
               </div>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" data-link="world" href="#">World</a>
+            </li>
           </ul>      
           <form class="form-inline mx-2 my-lg-0 my-2">
             <input class="form-control mr-sm-2" type="text" placeholder="Enter country">

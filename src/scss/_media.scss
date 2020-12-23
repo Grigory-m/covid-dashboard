@@ -1,6 +1,10 @@
 @media screen and (max-width: $first-point) {
   .wrapper {
     @include fullscreen-block;
+    
+    .fullscreen-btn {
+      display: none;
+    }
   }
 }
 

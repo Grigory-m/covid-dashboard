@@ -61,12 +61,15 @@ export default class Map {
     const map = document.createElement('div');
     const tabContent = document.getElementById('myTabContent');
     
-    map.classList.add('tab-map', 'tab-pane', 'fade');
+    map.classList.add('tab-map', 'tab-pane', 'fade', 'active', 'show');
     map.id = 'map';
     map.innerHTML = `
       <section class="map container">
         <div class="card text-white bg-primary mb-3">
-          <div class="card-header">Map</div>
+            <div class="card-header">
+              <span>Map</span>
+              <div class="fullscreen-btn"></div>
+            </div>
           <div class="card-body">
             <div id="map-content" class="map-content"></div>
           </div>

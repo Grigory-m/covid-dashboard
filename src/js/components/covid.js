@@ -88,7 +88,7 @@ class Covid {
     } 
     if (fullscreenBtn) {
       const wrapper = document.querySelector('.wrapper');
-      const target = fullscreenBtn.textContent.toLowerCase();
+      const target = fullscreenBtn.children[0].textContent.toLowerCase();
       if (wrapper.hasAttribute('data-fullscreen')) wrapper.removeAttribute('data-fullscreen');
       else wrapper.dataset.fullscreen = target;
     }

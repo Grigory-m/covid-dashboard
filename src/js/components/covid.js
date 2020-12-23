@@ -60,6 +60,7 @@ class Covid {
     const key = event.target.closest('.keyboard__key');
     const listPosition = event.target.closest('[data-list]');
     const fullscreenBtn = event.target.closest('.card-header');
+    const worldLink = event.target.closest('a[data-link="world"]');
     const list = new List();
     const map = new Map();
     const table = new Table();
@@ -85,12 +86,18 @@ class Covid {
       listLines.forEach((line) => line.classList.remove('table-active'));
       listPosition.classList.add('table-active');
       table.createTableContent(this.data, this.options, input.value, country);
+      graph.createGraphContent(this.data, this.options, input.value, country);
     } 
     if (fullscreenBtn) {
       const wrapper = document.querySelector('.wrapper');
       const target = fullscreenBtn.children[0].textContent.toLowerCase();
       if (wrapper.hasAttribute('data-fullscreen')) wrapper.removeAttribute('data-fullscreen');
       else wrapper.dataset.fullscreen = target;
+    }
+    if (worldLink) {
+      list.createListContent(this.data, this.options, input.value);
+      table.createTableContent(this.data, this.options, input.value);
+      graph.createGraphContent(this.data, this.options, input.value);
     }
   }
 

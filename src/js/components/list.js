@@ -1,6 +1,6 @@
 class List {
   
-  createListContent = (data, options, inputValue) => {
+  createListContent = (data, options, inputValue, selectedCountry) => {
     const list = document.querySelector('.table > tbody');
     const typeOfCases = document.querySelector('.type-case');
     const period = options.period === 'all time' ? `Total${  options.cases}` : `New${  options.cases}`;
@@ -20,6 +20,9 @@ class List {
         return elem.Country.slice(0, inputValueLength).toLowerCase() === inputValue.toLowerCase();
       }))
       dataCovid = dataCovidFiltered;
+    }
+    if (selectedCountry) {
+      dataCovid = dataCovid.filter((element) => element.Country === selectedCountry);
     }
     dataCovid.sort((a, b) => b[period] - a[period]).forEach((country) => {
       const listPosition = document.createElement('tr');

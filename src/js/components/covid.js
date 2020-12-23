@@ -5,6 +5,7 @@ import Header from "./header";
 import Table from "./table";
 import Map from './map';
 import Graph from "./graph";
+import Footer from "./footer";
 
 class Covid {
   constructor(options) {
@@ -19,6 +20,7 @@ class Covid {
     const graph = new Graph();
     const map = new Map();   
     const table = new Table();
+    const footer = new Footer();
             
     header.createHeader();
     layout.createLayout();
@@ -26,6 +28,7 @@ class Covid {
     map.createMap();
     table.createTable();
     graph.createGraph();
+    footer.createFooterMarkup();
 
     this.getData().then(() => {
       list.createListContent(this.data, this.options);

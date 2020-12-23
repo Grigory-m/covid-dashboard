@@ -58,11 +58,12 @@ class Covid {
     const {index} = event.target.dataset;
     const input = document.querySelector('input');
     const key = event.target.closest('.keyboard__key');
+    const listPosition = event.target.closest('[data-list]');
     const list = new List();
     const map = new Map();
     const table = new Table();
     const graph = new Graph();
-
+    
     if (index || key) {
       if (index === 'Confirmed' || index === 'Deaths' || index === 'Recovered') {
         this.options.cases = index;
@@ -75,7 +76,15 @@ class Covid {
       map.createMapContent(this.data, this.options, this.countries);
       table.createTableContent(this.data, this.options, input.value);
       graph.createGraphContent(this.data, this.options, input.value);
-    }       
+    }      
+    if (listPosition) {
+      const listLines = document.querySelectorAll('[data-list]');
+      const country = listPosition.children[1].innerText;
+      
+      listLines.forEach((line) => line.classList.remove('table-active'));
+      listPosition.classList.add('table-active');
+      table.createTableContent(this.data, this.options, input.value, country);
+    } 
   }
 
   inputHandler = (event) => {    

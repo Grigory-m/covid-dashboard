@@ -1,7 +1,10 @@
+import Table from "./table";
 export default class Map {
     
   createMapContent = (data, options, countries) => {
     const map = Map.prototype.map;
+    const table = new Table();
+    const input = document.querySelector('input');
     const period = options.period === 'all time' ? `Total${  options.cases}` : `New${  options.cases}`;
     const absolute = options.value === 'abs' ? 1 : 100000;
     const index = `${options.cases} / ${options.period} / ${options.value}`;
@@ -44,7 +47,10 @@ export default class Map {
         });
         circle.on('mouseout', () => {
           circle.closeTooltip();
-        });         
+        });
+        circle.on('click', () => {
+          table.createTableContent(data, options, input.value, country.Country);
+        });          
         newCircles.push(circle);
       }
     })

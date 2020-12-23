@@ -1,5 +1,5 @@
 export default class Table {
-  createTableContent = (data, options, inputValue) => {    
+  createTableContent = (data, options, inputValue, selectedCountry) => {    
     const tableContainer = document.querySelector('.tables table > tbody');
     const population = options.value === 'abs' ? 1 : 100000;
     const confirmedCases = options.period === 'all time' ? 'TotalConfirmed' : 'NewConfirmed';
@@ -20,6 +20,10 @@ export default class Table {
         return elem.Country.slice(0, inputValueLength).toLowerCase() === inputValue.toLowerCase();
       }))
       dataCovid = dataCovidFiltered;
+    }
+
+    if (selectedCountry) {
+      dataCovid = dataCovid.filter((element) => element.Country === selectedCountry);
     }
     
     dataCovid.sort((a, b) => b[confirmedCases] - a[confirmedCases]).forEach((country) => {

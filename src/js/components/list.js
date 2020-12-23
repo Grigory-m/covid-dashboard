@@ -26,6 +26,7 @@ class List {
       const img = new Image();
 
       listPosition.classList.add('table-dark');      
+      listPosition.setAttribute('data-list', '');
       img.src = `https://www.countryflags.io/${country.CountryCode.toLowerCase()}/flat/64.png`;
         listPosition.innerHTML = `
         <td><div class="flag"><img src="${img.src}" alt="flag"></div></td>

@@ -53,7 +53,10 @@ export default class Table {
     table.innerHTML = `
       <section class="tables container">
           <div class="card text-white bg-primary mb-3">
-            <div class="card-header">Table</div>
+            <div class="card-header">
+              <span>Table</span>
+              <div class="fullscreen-btn"></div>
+            </div>
             <div class="card-body">
               <table class="table table-hover">
                 <thead>

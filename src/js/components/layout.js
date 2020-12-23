@@ -22,7 +22,7 @@ class Layout {
 
       li.classList.add('nav-item');
       a.classList.add('nav-link');
-      if (tabName === 'list') a.classList.add('active');
+      if (tabName === 'map') a.classList.add('active');
       a.dataset.toggle = 'tab';
       a.href = `#${tabName.toLowerCase()}`;
       a.textContent = tabName;

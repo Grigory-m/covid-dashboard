@@ -40,13 +40,16 @@ class List {
   createList = () => {
     const tabContent = document.getElementById('myTabContent');
     const list = document.createElement('div');
-    list.classList.add('tab-list', 'tab-pane', 'fade', 'active', 'show');
+    list.classList.add('tab-list', 'tab-pane', 'fade');
     list.id = 'list';
 
     list.innerHTML = `
       <section class="list container">
         <div class="card text-white bg-primary mb-3">
-          <div class="card-header">List</div>
+            <div class="card-header">
+              <span>List</span>
+              <div class="fullscreen-btn"></div>
+            </div>
           <div class="card-body">
             <table class="table table-hover">
               <thead>

@@ -76,3 +76,23 @@ ul {
 .tab-table {
   grid-area: table;
 }
+
+.tab-header {
+  
+}
+
+.card {
+  position: relative;
+}
+
+.fullscreen-btn {
+  position: absolute;
+  background-image: url("../assets/img/fullscreen.svg");
+  background-size: cover;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  filter: invert(80%);
+  cursor: pointer;
+}

@@ -5,7 +5,6 @@ export default class Graph {
     const graphContainer = document.querySelector('.graph-content');
     this.canvas = document.createElement('canvas');
     this.canvas.height = '100%';
-    this.canvas.width = '100%';
     this.chart = null;
     this.title = 'world';
     const population = options.value === 'abs' ? 1 : 100000;
@@ -123,7 +122,10 @@ export default class Graph {
     graph.innerHTML = `
       <section class="graph container">
           <div class="card text-white bg-primary mb-3">
-            <div class="card-header">Graph</div>
+            <div class="card-header">
+              <span>Graph</span>
+              <div class="fullscreen-btn"></div>
+            </div>
             <div class="card-body">
               <div class="graph-content">
               </div>

@@ -16,9 +16,9 @@ export default class Graph {
     this.countryApiUrl = 'https://api.covid19api.com/total/dayone/country/';
     
     graphContainer.innerHTML = '';
-
+    
     if (!data.Countries) {
-      dataCovid = JSON.parse(localStorage.getItem('data'));
+      dataCovid = JSON.parse(localStorage.getItem('data')).Countries;
     }
 
     if (inputValue) {
@@ -30,7 +30,7 @@ export default class Graph {
     };
 
     if (selectedCountry) {
-      dataCovid = dataCovid.filter((element) => element.Country === selectedCountry);
+      dataCovid = dataCovid.filter((element) => element.Country === selectedCountry);      
     }
 
     if (!inputValue && !selectedCountry) {
@@ -48,7 +48,7 @@ export default class Graph {
         this.fillChart(options.cases);
       })
     } else {
-      if (!dataCovid[0]) return;
+      if (!dataCovid[0]) return;      
       this.getCountryDataByDates(dataCovid[0].Slug)
         .then((apiData) => {
           apiData.forEach((dataByDay) => {

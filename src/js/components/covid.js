@@ -101,9 +101,9 @@ class Covid {
       const input = document.querySelector('input');
       input.value = '';
       Map.prototype.country = '';
-      list.createListContent(this.data, this.options, value);
-      table.createTableContent(this.data, this.options, value);
-      graph.createGraphContent(this.data, this.options, value);
+      list.createListContent(this.data, this.options, input.value);
+      table.createTableContent(this.data, this.options, input.value);
+      graph.createGraphContent(this.data, this.options, input.value);
       map.createMapContent(this.data, this.options, this.countries);
     }
   }

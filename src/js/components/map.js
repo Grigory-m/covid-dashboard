@@ -42,7 +42,7 @@ export default class Map {
     dataCovid.forEach((country) => {
       const countryData = countries.find((element) => country.CountryCode === element.alpha2Code);
       if (countryData) {
-        const radius = (3 + 30 * (((country[period] / absolute) / maxValue)));
+        const radius = selectedCountry ? 20 : (5 + 40 * (((country[period] / absolute) / maxValue)));
         const coords = countryData.latlng;
         switch (options.cases) {
           case 'Deaths':

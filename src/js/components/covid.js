@@ -56,7 +56,7 @@ class Covid {
 
   clickHandler = (event) => {    
     const {index} = event.target.dataset;
-    const input = document.querySelector('input');
+    const {value} = document.querySelector('input');
     const key = event.target.closest('.keyboard__key');
     const listPosition = event.target.closest('[data-list]');
     const fullscreenBtn = event.target.closest('.fullscreen-btn');
@@ -65,6 +65,7 @@ class Covid {
     const map = new Map();
     const table = new Table();
     const graph = new Graph();
+    const {country} = Map.prototype;
     
     if (index || key) {
       if (index === 'Confirmed' || index === 'Deaths' || index === 'Recovered') {
@@ -74,19 +75,20 @@ class Covid {
       if (index === 'Per100k') this.options.value = 'per 100k';
       if (index === 'all-time') this.options.period = 'all time';
       if (index === 'last-day') this.options.period = 'last day';
-      list.createListContent(this.data, this.options, input.value);
-      map.createMapContent(this.data, this.options, this.countries);
-      table.createTableContent(this.data, this.options, input.value);
-      graph.createGraphContent(this.data, this.options, input.value);
+      list.createListContent(this.data, this.options, value);
+      map.createMapContent(this.data, this.options, this.countries, value, country);
+      table.createTableContent(this.data, this.options, value, country);
+      graph.createGraphContent(this.data, this.options, value, country);
     }      
     if (listPosition) {
       const listLines = document.querySelectorAll('[data-list]');
-      const country = listPosition.children[1].innerText;
-      
+      const listCountry = listPosition.children[1].innerText;
+      Map.prototype.country = listCountry;
       listLines.forEach((line) => line.classList.remove('table-active'));
       listPosition.classList.add('table-active');
-      table.createTableContent(this.data, this.options, input.value, country);
-      graph.createGraphContent(this.data, this.options, input.value, country);
+      table.createTableContent(this.data, this.options, value, listCountry);
+      map.createMapContent(this.data, this.options, this.countries, value, listCountry);
+      graph.createGraphContent(this.data, this.options, value, listCountry);
     } 
     if (fullscreenBtn) {
       const wrapper = document.querySelector('.wrapper');
@@ -96,9 +98,13 @@ class Covid {
       else wrapper.dataset.fullscreen = target;
     }
     if (worldLink) {
-      list.createListContent(this.data, this.options, input.value);
-      table.createTableContent(this.data, this.options, input.value);
-      graph.createGraphContent(this.data, this.options, input.value);
+      const input = document.querySelector('input');
+      input.value = '';
+      Map.prototype.country = '';
+      list.createListContent(this.data, this.options, value);
+      table.createTableContent(this.data, this.options, value);
+      graph.createGraphContent(this.data, this.options, value);
+      map.createMapContent(this.data, this.options, this.countries);
     }
   }
 
@@ -107,9 +113,11 @@ class Covid {
     const list = new List();
     const graph = new Graph();
     const table = new Table();
+    const map = new Map();
     list.createListContent(this.data, this.options, value);
     table.createTableContent(this.data, this.options, value);
     graph.createGraphContent(this.data, this.options, value);
+    map.createMapContent(this.data, this.options, this.countries, value);
   }
 }
 

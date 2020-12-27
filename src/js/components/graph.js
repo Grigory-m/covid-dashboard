@@ -48,6 +48,7 @@ export default class Graph {
         this.fillChart(options.cases);
       })
     } else {
+      if (!dataCovid[0]) return;
       this.getCountryDataByDates(dataCovid[0].Slug)
         .then((apiData) => {
           apiData.forEach((dataByDay) => {
@@ -100,7 +101,7 @@ export default class Graph {
   async getCountryDataByDates(country) {
     try {
       const response = await fetch(this.countryApiUrl + country);
-      const data = await response.json();
+      const data = await response.json();      
       return data;
     } catch (err) {
       throw new Error('Не удалось получить данные для графика по стране!')

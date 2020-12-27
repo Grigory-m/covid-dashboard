@@ -7,7 +7,7 @@ class Footer {
       <div class="github">
         <ul>
           <li><a href="https://github.com/Grigory-m">Grigory Murashko</a></li>
-          <li><a href="https://github.com/Soyo265">Kotlyarova Alyona</a></li>
+          <li><a href="https://github.com/Soyo265">Alyona Kotlyarova</a></li>
         </ul>
       </div>
       <div class="rs-school">

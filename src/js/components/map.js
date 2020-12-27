@@ -4,7 +4,7 @@ import List from "./list";
 
 export default class Map {
     
-  createMapContent = (data, options, countries) => {
+  createMapContent = (data, options, countries, value, selectedCountry) => {
     const {map} = Map.prototype;
     const table = new Table();
     const graph = new Graph();
@@ -15,6 +15,7 @@ export default class Map {
     const index = `${options.cases} / ${options.period} / ${options.value}`;
     const {L} = window;
     let dataCovid = data.Countries;
+    let dataCovidFiltered;
     let color;
     const newCircles = [];
     
@@ -24,11 +25,24 @@ export default class Map {
     if (Map.prototype.circles) {      
       Map.prototype.circles.forEach((circle) => circle.remove());
     }
-    
+    if (selectedCountry) {
+      dataCovid = dataCovid.filter((element) => element.Country === selectedCountry);
+      const countryData = countries.find((element) => dataCovid[0].CountryCode === element.alpha2Code);
+      Map.prototype.map.setView(countryData.latlng, 3);
+    }
+    if (value) {
+      dataCovidFiltered = dataCovid.filter(((elem) => {
+        const inputValueLength = value.length;
+        return elem.Country.slice(0, inputValueLength).toLowerCase() === value.toLowerCase();
+      }))
+      dataCovid = dataCovidFiltered;
+    }
+    if (!dataCovid[0]) return;
+    const maxValue = dataCovid.sort((a, b) => b[period] - a[period])[0][period];
     dataCovid.forEach((country) => {
       const countryData = countries.find((element) => country.CountryCode === element.alpha2Code);
       if (countryData) {
-        const radius = 100000 + 1000000 * ((country[period] / absolute) / countryData.population);
+        const radius = (3 + 30 * (((country[period] / absolute) / maxValue)));
         const coords = countryData.latlng;
         switch (options.cases) {
           case 'Deaths':
@@ -41,10 +55,10 @@ export default class Map {
             color = '#e74c3c'
             break;
         }        
-        const circle = L.circle(coords, {
+        const circle = L.circleMarker(coords, {
           stroke: false,
           fillColor: color,
-          fillOpacity: 1,
+          fillOpacity: 0.9,
           radius,
         }).addTo(map)
           .bindTooltip(`${country.Country}: ${index} ${Math.round(country[period] / absolute)}`, {className: 'tooltip'});
@@ -55,6 +69,7 @@ export default class Map {
           circle.closeTooltip();
         });
         circle.on('click', () => {
+          Map.prototype.country = country.Country;
           table.createTableContent(data, options, input.value, country.Country);
           graph.createGraphContent(data, options, input.value, country.Country);
           list.createListContent(data, options, input.value, country.Country);
